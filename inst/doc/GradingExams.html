@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Alejandro Gonzalez Recuenco" />
+
+<meta name="date" content="2017-11-17" />
+
+<title>Grading Exams</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceLine, a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+div.sourceLine, a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource div.sourceLine, .numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource div.sourceLine::before, .numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; color: #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Grading Exams</h1>
+<h4 class="author"><em>Alejandro Gonzalez Recuenco</em></h4>
+<h4 class="date"><em>11/17/2017</em></h4>
+
+
+
+<p>This vignette describes how to grade an exam using the script found on the exec/ folder. You can find where this script is found by typing on an R terminal.</p>
+<pre class="sourceCode r" id="cb1"><code class="sourceCode r"><div class="sourceLine" id="cb1-1" data-line-number="1">    <span class="kw">system.file</span>(<span class="st">&quot;exec&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;TexExamRandomizer&quot;</span>)</div></code></pre>
+<pre><code>## [1] &quot;/Library/Frameworks/R.framework/Versions/3.3/Resources/library/TexExamRandomizer/exec&quot;</code></pre>
+<section id="format-of-the-students-answers" class="level2">
+<h2>Format of the student’s answers</h2>
+<p>When you collect the responses from the student, you should follow the following prescriptions:</p>
+<ol class="example" type="1">
+<li>The actual answers to each question should be an integer number, (1 being the first choice). They should be written in the order that they are presented in the student’s exam. The columns should be called “Question 1”, “Question 2”, etc. (Or “Q 1”, “Q2”, etc).
+<ul>
+<li>If a certain question is left unanswered, give it the value 0 in the table.</li>
+</ul></li>
+<li>If you want to give extra points, add a column called “Extra Points” with the added points.</li>
+<li>You require a column called “Version”, where the version number for each exam is written.</li>
+<li>All other columns will be placed on the output “_Graded.csv&quot; table.</li>
+</ol>
+<table>
+<caption>Example responses format</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Class</th>
+<th style="text-align: right;">Exam.Version</th>
+<th style="text-align: left;">Nickname</th>
+<th style="text-align: right;">Roll.Number</th>
+<th style="text-align: right;">Q1</th>
+<th style="text-align: right;">Q2</th>
+<th style="text-align: right;">Q3</th>
+<th style="text-align: right;">Q4</th>
+<th style="text-align: right;">Q5</th>
+<th style="text-align: right;">Q6</th>
+<th style="text-align: right;">Q7</th>
+<th style="text-align: right;">Q8</th>
+<th style="text-align: right;">Q9</th>
+<th style="text-align: right;">Q10</th>
+<th style="text-align: right;">Q11</th>
+<th style="text-align: right;">Q12</th>
+<th style="text-align: right;">Q13</th>
+<th style="text-align: right;">Q14</th>
+<th style="text-align: right;">Q15</th>
+<th style="text-align: right;">ExtraPoints</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">M601</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">Titar</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M601</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Suwannapoe</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M601</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Kan</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M601</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">Mei</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M601</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">Offside</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">3</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="format-of-the-answer-sheet" class="level2">
+<h2>Format of the answer sheet</h2>
+<p>When you created the exams by using the <code>examrandomizer</code> script, it will generate a <code>fullanswersheet.csv</code> file. When grading, it assumes that the “correctTag” and the “wrongTag” are respectively “choice” and “CorrectChoice”.</p>
+<p>If that is not the case in your structure, simply change the names to “choice” and “CorrectChoice” of those columns.</p>
+<table>
+<caption>Answer sheet, the last two rows must be named “choice” and “CorrectChoice”</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Version</th>
+<th style="text-align: right;">index</th>
+<th style="text-align: right;">questions_original</th>
+<th style="text-align: right;">question_original</th>
+<th style="text-align: right;">questions</th>
+<th style="text-align: right;">question</th>
+<th style="text-align: right;">choices_original</th>
+<th style="text-align: right;">X.choice.CorrectChoice._original</th>
+<th style="text-align: right;">choices</th>
+<th style="text-align: right;">choice</th>
+<th style="text-align: right;">CorrectChoice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+<p>(But if you really want to change that assumption, you can access the script and edit <code>ASHEET_COLCORRECT</code> and <code>ASHEET_COLINCORRECT</code>)</p>
+<section id="what-if-i-wrote-some-questions-wrong-and-i-noticed-too-late-i-already-printed-the-exams" class="level3">
+<h3>What if I wrote some questions wrong and I noticed too late? I already printed the exams</h3>
+<p>If for some reason you relize one question is incorrectly written, but it is too late to rewrite the exam, find the original answer sheet in the <code>fullanswersheet.csv</code> (The rows with version number 0). Then, remove the lines from the answer sheet that refer to the original question you want to ignore. (Keep a backup of the answer sheet just in case).</p>
+<p>When the students answer the exam. Tell them to write <em>any</em> answer in that question, it will be ignored by the program.</p>
+</section>
+</section>
+<section id="grading-the-exam" class="level1">
+<h1>Grading the exam</h1>
+<p>You can specify directly the responses from the students (<code>--resp</code>) and the answer sheet (<code>--answer</code>).</p>
+<pre><code>gradeexamrandomizer --resp &lt;student responses csv&gt; --answer &lt;fullanswersheet csv&gt;</code></pre>
+<p>If you have both of those files on the same directory and you make sure their name is somehow similar to “<code>responses*.csv</code>” and “<code>answer*.csv</code>”, you can write the shorthand version.</p>
+<pre><code>gradeexamrandomizer --dir &lt;dirname&gt;</code></pre>
+<p>The output will be two csv files in the same directory where the students’ responses file is found, called <code>*_Graded.csv</code> and <code>*_Stats.csv</code>.</p>
+<table>
+<caption>Output graded file</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Class</th>
+<th style="text-align: right;">Exam.Version</th>
+<th style="text-align: left;">Nickname</th>
+<th style="text-align: right;">Roll.Number</th>
+<th style="text-align: right;">addedPoints</th>
+<th style="text-align: right;">addedAllPoints</th>
+<th style="text-align: right;">maxGrade</th>
+<th style="text-align: right;">Grade</th>
+<th style="text-align: right;">Grade_Total_Exam</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">M601</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: left;">Titar</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">100.00000</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M601</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">Suwannapoe</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">71.42857</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M601</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: left;">Kan</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">33.33333</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">M601</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: left;">Mei</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">53.33333</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">M601</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: left;">Offside</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">42.85714</td>
+</tr>
+</tbody>
+</table>
+<table>
+<caption>Output stats (It simply counts how many times each choice was chosen by every student)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Version</th>
+<th style="text-align: right;">index</th>
+<th style="text-align: right;">questions_original</th>
+<th style="text-align: right;">question_original</th>
+<th style="text-align: right;">questions</th>
+<th style="text-align: right;">question</th>
+<th style="text-align: right;">choices_original</th>
+<th style="text-align: right;">X.choice.CorrectChoice._original</th>
+<th style="text-align: right;">choices</th>
+<th style="text-align: right;">choice</th>
+<th style="text-align: right;">CorrectChoice</th>
+<th style="text-align: right;">ExamAnswerCount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">5</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">18</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+<section id="how-is-the-grade-calculated" class="level2">
+<h2>How is the grade calculated</h2>
+<p>In the output <code>*_Graded.csv</code> table, as you can see in the example above, there will be 5 rows added to the output:</p>
+<ul>
+<li><code>addedPoints</code>: Points added to each student, by adding a column in the responses called “ExtraPoints”</li>
+<li><p><code>addedAllPoints</code>: Points added to all students. This points are added differently, like if the exam had <code>addedAllPoints</code> extra questions, and all students got them correctly.</p>
+(Which right now will always be zero with the current script).</li>
+<li><code>maxGrade</code>: Maximum number of answers in that exam. If you had removed some questions that you want to remove, but that question is not found on all versions, then some exams will have a greater than</li>
+<li><code>Grade</code>: The number of correct answers on the student exam. (If there are more than one correct answer on each question, ti won’t be able to detec all of them, only whether the student wrote a correct one or not)</li>
+<li><p><code>Grade_Total_Exam</code>: The total grade, after scaling. It assumes the maximum grade of the exam is a 100%. For generailty we will denote it <code>MAX</code>. (To change it, use the option <code>--max &lt;integer&gt;</code>) <span class="math display">\[Grade_{Total Exam} = \frac{Grade + addedAllPoints}{maxGrade + addedAllPoints} \cdot MAX + addedPoints\]</span></p></li>
+</ul>
+</section>
+</section>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

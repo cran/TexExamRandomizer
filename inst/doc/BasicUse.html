@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Alejandro Gonzalez Recuenco" />
+
+<meta name="date" content="2017-11-27" />
+
+<title>Basic use of Exam Randomizer</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceLine, a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+div.sourceLine, a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource div.sourceLine, .numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource div.sourceLine::before, .numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; color: #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Basic use of Exam Randomizer</h1>
+<h4 class="author"><em>Alejandro Gonzalez Recuenco</em></h4>
+<h4 class="date"><em>2017-11-27</em></h4>
+
+
+
+<p>This vignette describes the basic way of randomizing exams using this package.</p>
+<section id="what-problem-is-this-software-adressing" class="level1">
+<h1>What problem is this software adressing</h1>
+<p>When you are using ‘LaTeX’ together with some software to randomize or personalize exams individually, most tools usually require for you to think ahead. It requires you to keep in mind exactly how the structure might change when randomizing the exam, and more importantly, it restricts the formatting that you are allowed to use. You are only allowed to use a certain naming convention, and in many cases it also only allow for one section to be randomize. When usually you would prefer to keep questions about a certain topic together.</p>
+<p>This package and the corresponding scripts and TexShop engines that come distributed with it tries to fix this.</p>
+<p>It can basically understand any ‘LaTeX’ “itemize” structure that follows the <code>\begin{envname}</code> <code>\end{envname}</code> that has a certain command that produces “items” within that environemnt <code>\item</code>.</p>
+<p>It is capable of understanding structures that are more nested as well, with only a few <a href="#caveats">caveats</a>.</p>
+<section id="personalization" class="level2">
+<h2>Personalization</h2>
+<p>It also adds a layer of personalization as well by being able to modify the values of commands on the preamble on a per-document basis, this is explained further on <code>vignette(&quot;ExamOptions&quot;, package = &quot;TexExamRandomizer&quot;)</code>:</p>
+<ul>
+<li>You can add information that is randomly chosen from a list of either integer numbers or words.
+<ul>
+<li>For example, choosing between the words “even” or “odd”.</li>
+<li>Or, choosing a number between 1 and a 1000 for a certain problem.</li>
+</ul></li>
+<li>You can add information that is found on a table you have.
+<ul>
+<li>For example, a table in which you store the names of the students, their class, their ID or a few more details. They will find that information added on the answer sheets where you want.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="how-to-start" class="level1">
+<h1>How to start</h1>
+<p>Enough with the explanations, if you are using the exam class structure on your exam already, <code>(questions, question; choices, choice|Correctchoice)</code>, it is fairly easy to adapt. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>To get started:</p>
+<ol class="example" type="1">
+<li>Add the <code>examrandomizer</code> executable somewhere in your path that can be found by the terminal.</li>
+<li>Then, drop the <code>examrandomizer.engine</code> on the TexShop engine library (Usually it is found in ~/Library/TeXShop/Engines)<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</li>
+<li><p>Once you have done that, just add a line in your ‘LaTeX’ document within the first 200 lines of your documen that says (let’s assume you want 5 versions)</p>
+<code>%! TexExamRandomizer = {&quot;noutput&quot; = 5}</code></li>
+<li><p>Run the examrandomizer engine choosing it from the TexShop engines list. Keep in mind that double quotes within the json format is mandatory.</p></li>
+</ol>
+<ul>
+<li><p>Alternatively, if you just want to use it directly from the terminal, or your TeX typesetting system doesn’t allow <code>.engine</code> files simply say:</p>
+<pre><code>  examrandomizer --file &lt;filename.tex&gt; --compile</code></pre></li>
+</ul>
+<ol start="5" class="example" type="1">
+<li>You will find in the location where your tex file was found a folder with the answer sheets and the compiled documents. (Don’t loose the answer sheets please.)</li>
+</ol>
+<p>All these scripts can be found in the exec/ folder. Which you can find by running</p>
+<pre class="sourceCode r" id="cb2"><code class="sourceCode r"><div class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">system.file</span>(<span class="st">&quot;exec&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;TexExamRandomizer&quot;</span>)</div></code></pre>
+<pre><code>## [1] &quot;/Library/Frameworks/R.framework/Versions/3.3/Resources/library/TexExamRandomizer/exec&quot;</code></pre>
+<p>For a more detailed explanation of all the options, please look at</p>
+<pre class="sourceCode r" id="cb4"><code class="sourceCode r"><div class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw">vignette</span>(<span class="st">&quot;ExamOptions&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;TexExamRandomizer&quot;</span>)</div></code></pre>
+<section id="grading" class="level2">
+<h2>Grading</h2>
+<p>If you are planning to also use the automatic grading then, after your students respond to the exams:</p>
+<ol start="6" class="example" type="1">
+<li>Add as well the <code>gradeexamrandomizer</code> to a path that can be found by the terminal.</li>
+<li>You have to collect the student’s responses in a table. Where the columns of the responses should be named “Q 1”, “Q 2”, etc.
+<ul>
+<li>To give extra points, if you write a column called “Extra Points” those points will be added to the total grade.</li>
+</ul></li>
+<li><p>Run the following command</p>
+<pre><code>gradeexamrandomizer --resp &lt;student responses csv&gt; --answer &lt;fullanswersheet csv&gt;</code></pre></li>
+<li><p>You will find a <code>_Graded.csv</code> and a <code>_Stats.csv</code> file in the same folder as the student’s responses with the grades and stats of the exam.</p></li>
+</ol>
+<p>For a more detailed explanation,</p>
+<pre class="sourceCode r" id="cb6"><code class="sourceCode r"><div class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">vignette</span>(<span class="st">&quot;GradingExams&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;TexExamRandomizer&quot;</span>)</div></code></pre>
+</section>
+<section id="creating-your-own-scripts" class="level2">
+<h2>Creating your own scripts</h2>
+<p>The implementation of a json-like parser within the document certainly makes it a lot more concise to use. However, that is simply a wrapper of the underlying functions that define this R library.</p>
+<p>If you want to use the full functionality, and try to that library, you might want to start by looking at the functions <code>CreateRandomExams</code> and <code>GenerateHomework</code>. Grading is done by calling <code>GradeExams</code> and <code>ObtainExamStats</code>… although if your exam structure is a bit wild it might have issues trying to grade it.</p>
+</section>
+</section>
+<section id="caveats" class="level1">
+<h1>Known “issues”</h1>
+<p>If you have the expertise or you are willing to put some time to fix these issues I would be happy to talk with you.</p>
+<ul>
+<li><p>The program assumes that you are already able to compile the ‘LaTeX’ document as it is. If your document is already ill-formed, the program will just run happily and create something that it is even more ill-formed.</p></li>
+<li><p>You can’t use nested itemize environments. If you don’t change the names of the environments between the different layers. All names that correspond to the structure of your ‘LaTeX’ document must be named uniquely.</p>
+<ul>
+<li><p>For example, the exam class uses as the top layer “itemize environment” the environment name “questions” and the item command “<code>\question</code>”. But the next layer is referred to with an environment named “choices”, being “<code>\choice</code>” or “<code>\CorrectChoice</code>” the item namse. This structure is perfectly correct to use for this program.</p></li>
+<li><p>However, using the “enumerate” and “itemize” environments by nesting them, since they both use the <code>\item</code> command would break the document.</p></li>
+</ul></li>
+<li><p>The second caveat is, this program <strong>ONLY</strong> reorders the lines. So if you have multiple answeres written on the same line it won’t detect them. Simply separate them in different lines.</p>
+<p>I think mostly everyone already does this, since it presents a more clean look on your documents. (Remember that you can always write % at the end of a line, and ‘LaTeX’ will ignore then the <code>\n</code> at the end of that line, but this program won’t)</p></li>
+</ul>
+</section>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>If you are using another structure, it is explained in the advance section how to tell the program what are you using. <code>vignette(&quot;ExamOptions&quot;, package = &quot;TexExamRandomizer&quot;)</code><a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>If you are using another ‘LaTeX’ distribution that doesn’t allow .engine scripts, you will have to do it on the terminal<a href="#fnref2" class="footnote-back">↩</a></p></li>
+</ol>
+</section>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

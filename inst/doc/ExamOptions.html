@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Alejandro Gonzalez Recuenco" />
+
+<meta name="date" content="2017-11-13" />
+
+<title>Randomizer options</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceLine, a.sourceLine { display: inline-block; min-height: 1.25em; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; }
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+div.sourceLine, a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource div.sourceLine, .numberSource a.sourceLine
+  { position: relative; }
+pre.numberSource div.sourceLine::before, .numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: absolute; left: -5em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em; }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa; color: #aaaaaa;  padding-left: 4px; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; color: initial; }
+}
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.bn { color: #40a070; } /* BaseN */
+code span.fl { color: #40a070; } /* Float */
+code span.ch { color: #4070a0; } /* Char */
+code span.st { color: #4070a0; } /* String */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.ot { color: #007020; } /* Other */
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.fu { color: #06287e; } /* Function */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code span.cn { color: #880000; } /* Constant */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.im { } /* Import */
+code span.va { color: #19177c; } /* Variable */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.op { color: #666666; } /* Operator */
+code span.bu { } /* BuiltIn */
+code span.ex { } /* Extension */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.at { color: #7d9029; } /* Attribute */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Randomizer options</h1>
+<h4 class="author"><em>Alejandro Gonzalez Recuenco</em></h4>
+<h4 class="date"><em>11/13/2017</em></h4>
+
+
+
+<section id="introduction-to-the-engine" class="level1">
+<h1>Introduction to the engine</h1>
+<p>The examrandomizer engine, <code>examrandomizer.engine</code>, and the <code>examrandomizer</code> script that it requires can be found in the exec/ folder of this library. Remember to place the <code>examrandomizer</code> script in a place where it can be found from the terminal.</p>
+<pre class="sourceCode r" id="cb1"><code class="sourceCode r"><div class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">system.file</span>(<span class="st">&quot;exec&quot;</span>, <span class="dt">package =</span> <span class="st">&quot;TexExamRandomizer&quot;</span>)</div></code></pre>
+<pre><code>## [1] &quot;/Library/Frameworks/R.framework/Versions/3.3/Resources/library/TexExamRandomizer/exec&quot;</code></pre>
+<p>As described on <a href="Basic%20use">Basic use</a>, the engine is a wrapper of the functions <code>CreateRandomExams</code> and <code>GenerateHomework</code>. It simply allow you to write options for those functions directly on the ‘LaTeX’ document by invoquing json-like options.</p>
+<p>Within the first two hundred lines it searches for tags <code>TexExamRandomizer</code>:</p>
+<pre><code>%! TexExamRandomizer = {&quot;optionname0&quot; : &quot;optionvalue0&quot;, &quot;optionname1&quot; : &quot;optionvalue1&quot;, ...}</code></pre>
+<p>Note a few things:</p>
+<ol class="example" type="1">
+<li>A <code>TexExamRandomizer</code> tag must be on just one line. However, you can have multiple lines displaying a range of options for each of them</li>
+<li><strong>Double quotes are mandatory</strong></li>
+</ol>
+<p>As an example, the complete set of options that I usually place on the preamble will look something similar to this:</p>
+<pre><code>%! TexExamRandomizer = {&quot;noutput&quot;:3, &quot;nquestions&quot;: 13}
+%! TexExamRandomizer = {&quot;table&quot;:&quot;TestClass.csv&quot;}
+%! TexExamRandomizer = {&quot;randominfo&quot;: {&quot;randomnumber&quot;:1000, &quot;parity&quot;:[&quot;even&quot;, &quot;odd&quot;]}}
+%! TexExamRandomizer = {&quot;extrainfo&quot;:{&quot;class&quot;:&quot;Class&quot;}}
+%! TexExamRandomizer = {&quot;extrainfo&quot;:{&quot;rollnumber&quot;:&quot;Roll Number&quot;,&quot;nickname&quot;:&quot;Nickname&quot;}}</code></pre>
+<p>And I will also include in the preamble the following items to catch all the relevant information and be able to use it in the document.</p>
+<pre><code>\newcommand{\randomnumber}{r1--1000} % Will be replaced by a number between 1 and 1000
+\newcommand{\parity}{evenorodd} % Will be replaced by the word &quot;even&quot; or the word &quot;odd&quot;
+\newcommand{\class}{classholder}
+\newcommand{\rollnumber}{rollnumber}
+\newcommand{\nickname}{StudentNickname}
+\newcommand{\myversion}{0} % This will be replaced by the version number
+\newcommand\rseed{seed} % This will be replaced by the seed used in R to seed the randomization process</code></pre>
+</section>
+<section id="specifying-options" class="level1">
+<h1>Specifying options</h1>
+<p>To describe the options, I will distinguish between options that can also be altered through the command line and those that can’t. I will write the name of the option preceded by “<code>-</code>” or “<code>--</code>” if they are command line options, while they will be in double quotes if the option can be written with a <code>TexExamRandomizer</code> tag within the document.</p>
+<p>To give options through the command line interface, you must specify first the option name and then the value, for example <code>--file filename.tex</code></p>
+<p>Keep in mind that options given to the terminal have priority over options written in the document itself.</p>
+<section id="command-line-only-options" class="level2">
+<h2>Command-line-only options</h2>
+<ul>
+<li><code>--file</code> : File to compile, this is the only <strong>mandatory</strong> option. (Using the examrandomizer.engine does it for you)</li>
+</ul>
+<p>All these options are defaulted to false unless they are given.</p>
+<ul>
+<li><code>--homework</code>: If this option is given, It only applies the <a href="#table">personalization on the preamble</a>, it doesn’t try to randomize the document order.</li>
+<li><code>-c</code>/<code>--compile</code>: If this option is given, it compiles the documents to pdfs in the output folder using latexmk.</li>
+<li><code>--xelatex</code>: Should the engine used be xelatex. Otherwise, it will use the pdflatex engine</li>
+<li><code>--debug</code>: If this option is true, it doesnt remove auxiliary files</li>
+</ul>
+</section>
+<section id="general-options" class="level2">
+<h2>General options</h2>
+<ul>
+<li><p><code>--table</code>/<code>&quot;table&quot;</code> : Default -&gt; <code>NULL</code></p>
+<p>Table file from which to extract info to personalize the document. If this parameter is not given it requires to give the “noutput”.</p>
+<p>Look at <a href="#table">Options to personalize documents</a> for more information in how documents can be personalized with a table.</p>
+<p><strong>IMPORTANT: The table file must be specified relative to the location of the tex document being compiled, not relative to the executable location</strong></p></li>
+<li><p><code>-n</code>/<code>--noutput</code>/<code>&quot;noutput&quot;</code>:</p>
+<p>Number of output versions. If this paramenter is not given, it requires the “table” parameter to be given. It will understand the number of output versions to be the same as the number of rows in the table.</p></li>
+<li><p><code>-q</code>/<code>--nquestions</code>/<code>&quot;nquestions&quot;</code>: Default -&gt; <code>&quot;max&quot;</code></p>
+Number of “items” in the outer most layer (Usually it will be the number of questions).
+<ol start="3" class="example" type="1">
+<li>If the value is a number, it will remove questions from the output versions making all exams have that number of questions.
+<ul>
+<li>All sections must have at least one question, therefore, if you have 5 sections, you can’t specify the nquestions to be 4 in the output.</li>
+</ul></li>
+<li>If the value is a vector, for example <code>&quot;nquestions&quot;:[3, 4, 5, 6]</code>, the vector must then:
+<ul>
+<li>Have the same length as the number of sections</li>
+<li>Have all values be non-zero values</li>
+</ul></li>
+<li>If the value can’t be coherced to numeric (For example, “max”), it keeps all the questions form the exam.</li>
+</ol></li>
+<li><p><code>-s</code>/<code>--seed</code>/<code>&quot;seed&quot;</code> : Default -&gt; <code>NULL</code></p>
+<p>Seed to intialize the randomization. - If no value of seed is found it looks for <code>compileInfo.txt</code> in the output folder where it is going to dump the tex files. If it doesn’t find that file, it uses <code>Sys.time()</code> to create a seed. This prevents changing the seed between runs of the same file.</p></li>
+<li><p><code>&quot;layernames&quot;</code>/<code>&quot;layercmd&quot;</code> :</p>
+<p>Default -&gt;</p>
+<p><code>{&quot;layernames&quot;:[&quot;questions&quot;, &quot;choices&quot;], &quot;layercmd&quot;: [&quot;question&quot;, &quot;(choice|CorrectChoice)&quot;]}</code></p>
+<p>A character vector with the names of the nested layer environments. It recognizes simple regex to allow multiple commands. For example, the default value <code>(choice|CorrectChoice)</code> can be read as the command being either <code>\choice</code> or <code>\CorrectChoice</code>.</p>
+<p>The default values follows the standard exam class defaults. Therefore, it would detect appropiatly the following structure.</p>
+<pre><code>  \begin{questions}
+      \question
+      \begin{choices}
+          \choice
+          \choice
+          \choice
+          \CorrectChoice
+      \end{choices}
+      ...
+  \end{questions}
+  \begin{questions}
+      ...
+  \end{questions}
+  ...</code></pre></li>
+<li><p><code>&quot;reordersections&quot;</code>, <code>&quot;reorderitems&quot;</code>: Default value -&gt;</p>
+<p><code>{&quot;reordersections&quot;: [true, ..., true], &quot;reorderitems&quot;: [true, ..., true]}</code></p>
+<p>Given the <code>layernames</code> and <code>layercmd</code>, the values of <code>reordersections</code> and <code>reorderitems</code> should be the same length.</p>
+<ul>
+<li>Every entry refers to a layer, from outer-most layer to inner-most layer</li>
+<li>Notice that the values on the arrays must be “true” or “false”, <strong>Case sensitive</strong>.</li>
+<li>By reordering “items”, it specifically means reordering each itim within one environment and reordering them.</li>
+<li>By reordering “sections”, it specifically means to reorder the order of the environments, from <code>\begin{}</code> to <code>\end{}</code>.
+<ul>
+<li><p>It should be clear that everything <strong>before the first section</strong> will be kept fixed.</p>
+<p>This is done to prevent the main explanation from getting dragged with the first section. If you <em>really</em> want to avoid some text from getting left behind, for some specific use you might have just place it on the same line as the <code>\begin{}</code> environment is on.</p></li>
+</ul></li>
+</ul></li>
+<li><p><code>&quot;correcttag&quot;</code>: Default -&gt; <code>[&quot;CorrectChoice&quot;]</code></p>
+<p>The ‘LaTeX’ command name (<code>\correcttag</code>) that will mark a choice as being correct if it is found somewhere within the text of that choice.</p></li>
+<li><p><code>&quot;wrongtag&quot;</code>: Default -&gt; <code>[&quot;choice&quot;]</code></p>
+<p>The ‘LaTeX’ command name (<code>\wrongtag</code>) that will mark a choice as being incorrect if found somewhere within the text of that choice.</p>
+<p>If this command is given a value that can’t be found in the document, those sections will be left out form the answer sheet, and only the correct ones will be display</p></li>
+</ul>
+</section>
+</section>
+<section id="table" class="level1">
+<h1>Personalizing a document</h1>
+<p>If a table is specified, either through the command line with <code>--table</code> or through the document with a “table” option, note that each row on the table will represent a student.</p>
+<p>With that, I mean that the personalization will occur for every row on the table. Therefore, if the number of versions that you specified is 3, and there are 20 rows, the program will try to distribute the rows more or less evenly between the number of versions that were specified. But it will still customize each and every one of the version according to the settings given here.</p>
+<section id="how-the-personalization-is-done" class="level2">
+<h2>How the personalization is done</h2>
+<p>We rely in using ‘LaTeX’ macros to personalize documents. We search within the preamble for <code>newcommand</code> tags,</p>
+<pre><code> \newcommand{\commandname}{commandvalue}</code></pre>
+<p>And once found, we change the command value to the new personalized value. A common use would be, for example, personalizing the document with a name by writing the following macro</p>
+<pre><code>\newcommand\Name{TestName}</code></pre>
+<p>An once personalization occurs, each version will replace the <code>\Name</code> command value for the value required for each version.</p>
+<p><em>Note that if you don’t want the engine to modify the macro you are using, you can instead of using <code>\newcommand</code>, you could use <code>\newcommand*</code> or <code>\def</code> . The asterisk <code>*</code> has a special meaning in ‘LaTeX’, but with the simple use that we are giving this commands, that can’t have options, that is irrelevant..</em></p>
+</section>
+<section id="reserved-command-names" class="level2">
+<h2>Reserved command names</h2>
+<p>The following commands names are reserved names, that you can overwrite, but I would recommend you not to.</p>
+<p>Instead, simply add always the next two lines in your document</p>
+<pre><code>\newcommand\rseed{0}
+\newcommand\myversion{0}</code></pre>
+<ul>
+<li>The command <code>\rseed</code> after running the randomization will store the seed that R used to seed all random numbers.</li>
+<li><p>The command <code>\myversion</code> will hold the version number, that can be used in the document to display the version of each exam.</p>
+<p>(When using the option <code>--homework</code>, this last command is not replaced)</p></li>
+</ul>
+</section>
+<section id="document-options" class="level2">
+<h2>Document options</h2>
+<p>So, how do you add your own commands to be personalized you might ask?</p>
+<p>There are two types of information that you might want to add to personalize each individual document.</p>
+<ul>
+<li>Random information, that would be assigned individually at randomly.</li>
+<li>Or extra information, that would be taken from the table itself and incorporated into the document.</li>
+</ul>
+<section id="random-information" class="level3">
+<h3>Random information</h3>
+<p>Random information will be added in the document by adding the option <code>&quot;randominfo&quot;</code>. The format in the document will be as follows</p>
+<pre><code>!% TexExamRandomizer = {&quot;randominfo&quot;: {&quot;&lt;commandname&gt;&quot;: &lt;integer&gt;, &quot;&lt;commandname2&gt;&quot; : &lt;integer&gt; ...}}</code></pre>
+<p>It will try to find commands of the type <code>\newcommand{\commandname}{??}</code> and replace them with <code>\newcommand{\commandname}{randint}</code>. Where the random integer that will be chosen will be a number between 1 and the <code>&lt;integer&gt;</code>.</p>
+<p>If on the other hand, you want the value of the command to be chosen between a list of values, you can instead write</p>
+<pre><code>&quot;&lt;commandname&gt;&quot; : [&quot;value1&quot;, &quot;value2&quot;, &quot;value3&quot;]</code></pre>
+<p>And the program will choose randomly between one of those values.</p>
+<p>The most useful way to use this option, in my opinion, is just to generate one numbe from which to seed the pgf/TikZ random seed, and then use native tools in ‘LaTeX’ to randomize anything you want. In that way you have much more control, however, for some people it might be more comfortable and more clear to specify it directly in the tags.</p>
+</section>
+<section id="extra-information." class="level3">
+<h3>Extra information.</h3>
+<p>Extra information can be added in the document with the option <code>&quot;extrainfo&quot;</code> as follows</p>
+<pre><code>!% TexExamRandomizer = {&quot;extrainfo&quot;: {&quot;&lt;cmdName&gt;&quot;:&quot;&lt;columnName&gt;&quot;, &quot;&lt;cmdName&gt;&quot;:&quot;&lt;columnName&gt;&quot;, ...}}</code></pre>
+<p>It works similarly to how adding random information works. However, instead of specifying the values from which to choose, we are instead specifying a <strong>column name</strong> in the table from which to gather the information. (Look at the “table” option to see how you can suggest a table to the program). For each row, it will choose the corresponding value and replace in the tex document the values of</p>
+<pre><code>\newcommand\cmdName{Testname}</code></pre>
+<p>to instead use</p>
+<pre><code>\newcommand\cmdName{&lt;vale row i of column columnName&gt;}</code></pre>
+<section id="naming-columns-with-spaces-and-punctuation-marks." class="level4">
+<h4>Naming columns with spaces and punctuation marks.</h4>
+<p>Keep in mind that we are still using R, which modifies the name of the column (It really dislike spaces and certain symbols). Therefore, to prevent having confusing behaviour, I decided to simply remove all punctuation marks and spaces. Therefore, punctuation marks and spaces will be ignored both on tags “extrainfo” and on the column names on the “table” provided.</p>
+</section>
+</section>
+</section>
+</section>
+<section id="examples." class="level1">
+<h1>Examples.</h1>
+<p>The following examples show some sets of options for different characteristics.</p>
+<section id="three-layers-document-with-table-info" class="level2">
+<h2>Three layers document with table info</h2>
+<pre><code>%! TexExamRandomizer = {&quot;noutput&quot;: 5}
+%! TexExamRandomizer = {&quot;table&quot;:&quot;TestClass.csv&quot;}
+%! TexExamRandomizer = {&quot;extrainfo&quot;:{&quot;Class&quot;:&quot;class&quot;, &quot;Roll Number&quot;:&quot;rollnumber&quot;,&quot;Nickname&quot;:&quot;nickname&quot;}}
+
+%! TexExamRandomizer = {&quot;layercmd&quot;:[&quot;section&quot;, &quot;question&quot;, &quot;(choice|CorrectChoice)&quot;]}
+%! TexExamRandomizer = {&quot;layernames&quot;:[&quot;document&quot;, &quot;questions&quot;, &quot;choices&quot;]}
+%! TexExamRandomizer = {&quot;reordersections&quot;:[true, true, false]}
+%! TexExamRandomizer = {&quot;reorderitems&quot;:[false, true, true]}</code></pre>
+</section>
+<section id="exam-class-with-6-sections-choosing-a-few-questions-for-each-section." class="level2">
+<h2>Exam class with 6 sections, choosing a few questions for each section.</h2>
+<pre><code>%! TexExamRandomizer = {&quot;noutput&quot;:2, &quot;nquestions&quot;: [2,3,3,3,1,1]}
+%! TexExamRandomizer = {&quot;randominfo&quot;: {&quot;randomnumber&quot;:100, &quot;switchnumber&quot;:[&quot;even&quot;, &quot;odd&quot;]}}</code></pre>
+</section>
+<section id="fixing-position-of-sections-and-questions.-randomizing-only-the-choices-for-each-question." class="level2">
+<h2>Fixing position of sections and questions. Randomizing only the choices for each question.</h2>
+<pre><code>%! TexExamRandomizer = {&quot;noutput&quot;:2}
+%! TexExamRandomizer = {&quot;randominfo&quot;: {&quot;randomnumber&quot;:100000000, &quot;switchnumber&quot;:[&quot;even&quot;, &quot;odd&quot;, &quot;stop&quot;]}}
+%! TexExamRandomizer = {&quot;reordersections&quot;:[false, false], &quot;reorderitems&quot;:[false, true]}
+%! TexExamRandomizer = {&quot;table&quot;:&quot;TestClass.csv&quot;}
+%! TexExamRandomizer = {&quot;extrainfo&quot;:{&quot;Class&quot;:&quot;class&quot;, &quot;Roll Number&quot;:&quot;rollnumber&quot;,&quot;Nickname&quot;:&quot;nickname&quot;}}</code></pre>
+</section>
+</section>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

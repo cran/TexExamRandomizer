@@ -6,25 +6,40 @@
 \alias{CompileLatexDirHW}
 \title{Compiling function}
 \usage{
-CompileLatexDir(pdf.dir.out, latex.dir.in, engine = "xelatex",
-  compile.dir = NULL, extracmdoptions = NULL)
+CompileLatexDir(
+  pdf.dir.out,
+  latex.dir.in,
+  engine = "xelatex",
+  compile.dir = NULL,
+  extracmdoptions = NULL
+)
 
-CompileLatexDirEXAM(pdf.dir.out, latex.dir.in, engine = "xelatex",
-  compile.dir = NULL, extracmdoptions = NULL)
+CompileLatexDirEXAM(
+  pdf.dir.out,
+  latex.dir.in,
+  engine = "xelatex",
+  compile.dir = NULL,
+  extracmdoptions = NULL
+)
 
-CompileLatexDirHW(pdf.dir.out, latex.dir.in, engine = "xelatex",
-  compile.dir = NULL, extracmdoptions = NULL)
+CompileLatexDirHW(
+  pdf.dir.out,
+  latex.dir.in,
+  engine = "xelatex",
+  compile.dir = NULL,
+  extracmdoptions = NULL
+)
 }
 \arguments{
 \item{pdf.dir.out}{Directory where the pdf output will be sent to}
 
 \item{latex.dir.in}{Directory where all the tex files are found.}
 
-\item{engine:}{Engine to use when compiling. Currently the options are \code{xelatex}, \code{lualatex}, \code{latex} and \code{pdflatex}
+\item{engine}{Engine to use when compiling. Currently the options are \code{xelatex}, \code{lualatex}, \code{latex} and \code{pdflatex}
 
        \code{xelatex} is the default value. However, if the value is not recognized, \code{pdflatex} is used instead.}
 
-\item{compile.dir:}{Directory from which compilation is invoked, if not specified, the directory we are compiling will be from where we do it. (This is specially usefull since we want to mantain the same relative paths from the main file).}
+\item{compile.dir}{Directory from which compilation is invoked, if not specified, it defaults to the latex.dir.in.}
 }
 \value{
 None
@@ -49,10 +64,13 @@ TexExamRandomizer::CompileLatexDir(
     pdf.dir.out = tempdir(),
     engine= "pdf",
     latex.dir.in = input_folder,
-    extracmdoptions = "-time")
+    extracmdoptions = "-C")
+    # The "-C" option makes sure we simulate we use the command, but the command
+    # doesnt run compiling the document, it only tries to clean up
 
 }
 \author{
 Alejandro Recuenco \email{alejandrogonzalezrecuenco@gmail.com}
 }
+\concept{Compilation functions}
 \keyword{internal}

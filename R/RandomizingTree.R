@@ -1,6 +1,6 @@
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2017
+# (C) 2023
 #### Randomizing layers
 ####
 ### NOTE: Right now the naming convention is hardcoded into the regex's, Is there any reason to change that?
@@ -13,13 +13,13 @@
 #'
 #'  Note how the names of the list are expected to represent the structure described in \code{\link{StructureDocument}}
 #
-#' @param NamesOfListToSample
+#' @param command_vector
 #'     The names of each element on the list we want to sample, with the original order. The usual use would be \code{NamesOfListToSample = names(list)}.
 #'
 #'     Being specific, the names that are provided will be matched with the regular expression \code{"^[[:digit:]]+_.+[[:digit:]]+_"}.
 #' @param sampleSectionOrder
 #'     Should it also move around the sections or not? Look at the details for a more detailed explanation
-#' @param isRandomized  If this is set to false, it will not randomize the list, it will just output \code{1:length(OfNamesOfListToSample)}. It handles properly when the list is of length 0, by outputting \code{integer(0)}
+#' @param randomizeSection  If this is set to false, it will not randomize the list, it will just output \code{1:length(command_vector)}. It handles properly when the list is of length 0, by outputting \code{integer(0)}
 #
 #
 #' @return

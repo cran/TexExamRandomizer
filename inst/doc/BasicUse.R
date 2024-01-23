@@ -1,9 +1,12 @@
-## ----echo=TRUE-----------------------------------------------------------
+## ----echo=TRUE----------------------------------------------------------------
 system.file("exec", package = "TexExamRandomizer")
 
-## ----eval=FALSE----------------------------------------------------------
+## ----eval=FALSE---------------------------------------------------------------
 #  vignette("ExamOptions", package = "TexExamRandomizer")
 
-## ----eval=FALSE----------------------------------------------------------
+## -----------------------------------------------------------------------------
+system.file("extdata", "ExampleTexDocuments", package = "TexExamRandomizer")
+
+## ----eval=FALSE---------------------------------------------------------------
 #  vignette("GradingExams", package = "TexExamRandomizer")
 

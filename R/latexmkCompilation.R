@@ -1,6 +1,6 @@
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2017
+# (C) 2023
 #### LateX Folder Compilation Codes ####
 ####
 ####
@@ -15,11 +15,11 @@
 #'
 #' @param pdf.dir.out Directory where the pdf output will be sent to
 #' @param latex.dir.in Directory where all the tex files are found.
-#' @param engine: Engine to use when compiling. Currently the options are \code{xelatex}, \code{lualatex}, \code{latex} and \code{pdflatex}
+#' @param engine Engine to use when compiling. Currently the options are \code{xelatex}, \code{lualatex}, \code{latex} and \code{pdflatex}
 #'
 #'        \code{xelatex} is the default value. However, if the value is not recognized, \code{pdflatex} is used instead.
 #
-#' @param compile.dir: Directory from which compilation is invoked, if not specified, the directory we are compiling will be from where we do it. (This is specially usefull since we want to mantain the same relative paths from the main file).
+#' @param compile.dir Directory from which compilation is invoked, if not specified, it defaults to the latex.dir.in.
 #' @return None
 #' @author Alejandro Recuenco \email{alejandrogonzalezrecuenco@@gmail.com}
 #' @export
@@ -37,7 +37,9 @@
 #'     pdf.dir.out = tempdir(),
 #'     engine= "pdf",
 #'     latex.dir.in = input_folder,
-#'     extracmdoptions = "-time")
+#'     extracmdoptions = "-C")
+#'     # The "-C" option makes sure we simulate we use the command, but the command
+#'     # doesnt run compiling the document, it only tries to clean up
 #'
 
 CompileLatexDir <- function(pdf.dir.out, latex.dir.in, engine = "xelatex", compile.dir = NULL, extracmdoptions = NULL){

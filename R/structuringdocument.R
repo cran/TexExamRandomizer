@@ -1,6 +1,6 @@
 # Author Alejandro Gonzalez Recuenco
 # e-mail <alejandrogonzalezrecuenco@gmail.com>
-# (C) 2017
+# (C) 2023
 
 # Functions required to create the Structure
 
@@ -85,7 +85,6 @@ IsWellSectioned <- function(u, v) {
 NULL
 
 
-#' @inheritParams FindStructure
 #' @return Returns a numeric vector, indicating each occurrance of a start of a environment that looks like \\begin\{\code{cmdName}\}
 #'
 #' @keywords internal
@@ -105,8 +104,7 @@ FindBegin <- function(x, cmdName) {
     )
 }
 
-#'The function\code{\link{FindEnd}} is function returns the position  of the vector string x in which it finds a match to the ending of an latex environment with name \code{cmdName}
-#' @inheritParams FindStructure
+#'The function \code{\link{FindEnd}} is function returns the position  of the vector string x in which it finds a match to the ending of an latex environment with name \code{cmdName}
 #' @return Returns a numeric vector, indicating each occurrence of a start of a environment that looks like \\end\{\code{cmdName}\}
 #'
 #' @keywords internal
@@ -128,7 +126,6 @@ FindEnd <- function(x, cmdName) {
 
 }
 
-#' @inheritParams FindStructure
 #' @return Returns a numeric vector, indicating each occurrence of the command \\\code{cmdName} found in the document.
 #' @keywords internal
 #'
@@ -152,12 +149,12 @@ FindCommand <- function(x, cmdName) {
 
 #' @title DivideFile
 #' @description Function that takes a vector of text lines, \code{x}, and divides it in preamble and document.
-#' @details It ignores everything after the first \\end\{document\} and it will throw and error if it finds more than one \\begin\{document\} before that
+#' @details It ignores everything after the first end document command and it will throw and error if it finds more than one begin document command before that
 #' @param x A character vector, each element represents one line of the latex document
 #' @return  Returns a list with two character vectors:
 #' \describe{
-#' \item{preamble}{ A character vector that includes \emph{every line} of \code{x} up to \\begin\{document\}}
-#' \item{document}{A character vector that includes \emph{every line} from \\begin{document} to the first \\end\{document\}} }
+#' \item{preamble}{A character vector that includes \emph{every line} of \code{x} up the begin document command}
+#' \item{document}{A character vector that includes \emph{every line} from the begin document command to the first end document command} }
 #' @export
 #' @family Structuring Document
 #' @examples

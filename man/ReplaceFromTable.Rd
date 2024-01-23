@@ -53,5 +53,7 @@ for (i in 1:nrow(TexExamRandomizer::testclass)) {
 }
 }
 \seealso{
-Other Preamble adjustment: \code{\link{ReplacePreambleCommand}}
+Other Preamble adjustment: 
+\code{\link{ReplacePreambleCommand}()}
 }
+\concept{Preamble adjustment}

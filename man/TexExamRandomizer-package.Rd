@@ -15,7 +15,7 @@ If you just want to randomize your exams,
 \itemize{
     \item Look at \code{vignette("BasicUse", package = "TexExamRandomizer")} for an introduction of the concept behind this library and a quick way to start using it.
 
-\item Look at \code{vignette("ExamOptions", package = "TexExamRandomizer")} for a more detailed explanations of what options can be used on a document.
+    \item Look at \code{vignette("ExamOptions", package = "TexExamRandomizer")} for a more detailed explanations of what options can be used on a document.
 }
 
 If instead you are trying to use the library to create your own randomizer for a certain use you might have, you should start by looking at \code{\link{CreateRandomExams}} and \code{\link{GenerateHomework}}.
@@ -24,6 +24,7 @@ If instead you are trying to use the library to create your own randomizer for a
 Useful links:
 \itemize{
   \item \url{https://github.com/alexrecuenco/TexExamRandomizer}
+  \item \url{https://alexrecuenco.github.io/TexExamRandomizer/}
   \item Report bugs at \url{https://github.com/alexrecuenco/TexExamRandomizer/issues}
 }
 
